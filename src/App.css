@@ -1,0 +1,223 @@
+.App {
+  
+}
+
+/*--Todos.jsx--*/
+.container{
+  max-width: 700px;
+  margin: 5% auto;
+  padding: 30px;
+  box-shadow: 0px 0px 14px #bd80e1;
+  background-color: white;
+  border-radius: 10px;
+  min-height: 540px;
+}
+.container h2{
+  text-align: center;
+  font-family: Inter,sans-serif;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.titleimg{
+  width: 50px
+}
+
+/*--FormBox.jsx-- */
+form{
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  box-shadow: 0 0 4px grey;
+  border-radius: 8px;
+  margin-bottom: 26px;
+}
+
+
+/*Input field css*/
+input[type=text]{
+  width: 83%;
+  height: 40px;
+  margin-right: 5px;
+  border: none;
+  border-color: transparent;
+  line-height: 2.15;
+  font-size: 1rem;
+  padding: 4px 1rem;
+  font-family: Inter,sans-serif;
+  border-radius: 6px;
+  color: #4f4f4f;
+}
+input[type=text]:focus{
+  border: none;
+  outline: none;
+}
+input[type=date]{
+  color: #6700c7;
+  margin-right: 5px;
+  letter-spacing: -1px;
+  border: none;
+  background-color: #f1e2ff;
+  padding: 8px 10px;
+  border-radius: 0.25rem;
+}
+input[type=date]:focus{
+  border: none;
+  outline: none;
+}
+
+button{
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 0;
+  font-weight: 500;
+  padding: 0.625rem 1.5rem 0.5rem;
+  font-size: .75rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  letter-spacing: 1px;
+  
+}
+.add-btn{
+  color: #fff;
+  transition: .8s;
+  background: linear-gradient(90deg, rgb(101 92 255) 0%, rgb(0 0 251) 44%, rgba(0,212,255,1) 100%);
+  box-shadow: 0 4px 9px -4px #3b71ca;
+}
+.add-btn:hover{
+  box-shadow: 0 8px 9px -4px rgb(59 113 202 / 30%), 0 4px 18px 0 rgb(59 113 202 / 20%);
+  outline: 0;
+  background: linear-gradient(90deg, rgb(56 45 248) 0%, rgb(3 3 203) 44%, rgb(0 170 205) 100%);
+}
+
+
+
+/*--FilterButton.jsx--*/
+.filter-all, .filter-completed, .filter-uncompleted, .filter-starred {
+  background-color: #8500ff;
+  color: white;
+  margin-right: 12px;
+}
+.active{
+  background-color: #51009c;
+}
+
+/*Todo Wrapper(Declared in Todos.jsx)*/
+
+.todo-wrapper{
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0 20px;
+  margin-top: 12px;
+}
+
+/*TodoItem.jsx CSS*/
+.main-todo{
+  background-color: ghostwhite;
+  align-items: center;
+  margin: 10px 0;
+  padding-left: 0.5em;
+}
+.todo-container{
+  display: flex;
+  overflow-wrap: anywhere;
+  align-items: center;
+}
+
+.todo-title{
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: auto;
+  font-family: Inter, 'sans-serif';
+  margin-bottom: 8px;
+}
+
+.delete-btn, .edit-btn, .star-btn, .completed-btn{
+  padding: 4px 6px;
+  color: red;
+  cursor: pointer;
+  background: ghostwhite;
+  border: none;
+  font-size: 22px;
+}
+.delete-btn:hover{
+  color: rgb(255, 62, 62);
+  text-shadow: 0px 0px 10px gray;
+}
+
+.edit-btn{
+  font-size: 17px;
+  color: cornflowerblue;
+  margin-right: 8px;
+}
+.edit-btn:hover{
+  color: #3179fb;
+  text-shadow: 0px 0px 10px gray;
+}
+.edit-btn:active{
+  color: cornflowerblue;
+}
+
+.star-btn{
+  font-size: 17px;
+  color: #d2b311;
+  margin-right: 8px;
+}
+
+.completed-btn{
+  font-size: 17px;
+  color: rgb(0, 183, 0);
+  margin-right: 8px;
+}
+
+.duedate-text{
+  font-size: 11px;
+  font-style: oblique;
+  color: #f19d9d;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+
+/*When todo is mark done*/
+.todo-completed{
+  background-color: rgb(217 255 217);
+}
+
+.profile-area{
+  position: absolute;
+  width: 31px;
+  left: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.profile-area img{
+  width: 95%;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.icon{
+  color: white;
+  font-size: x-large;
+}
+
+/*ScrollBar Styling*/
+::-webkit-scrollbar {
+  width: 0.5rem;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #c3c2c2;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(70,82,243);
+  background: linear-gradient(0deg, rgba(70,82,243,1) 23%, rgba(161,39,242,1) 100%);
+  outline: 0px inset #7fffd4;
+  border-radius: 10px;
+  height: 50px;
+}
