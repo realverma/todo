@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { TodoItem } from "./TodoItem";
 import { FormBox } from "./FormBox";
 import { FilterButtons } from "./FilterButtons";
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 export default function Todos() {
   const [inputData, setInputData] = useState("");
@@ -62,10 +63,6 @@ export default function Todos() {
     }
   }
 
-  // Sorted items
-  const sortedItems = [...items];
-  sortedItems.sort((a, b) => new Date(b.time) - new Date(a.time));
-
   //Edit the item
   function editItem(index) {
     const item_edited = items.find((curElem) => {
@@ -106,24 +103,49 @@ export default function Todos() {
   const filterTasks = (event) => {
     setFilter(event.target.dataset["filter"]);
   };
-  let filtered = [...sortedItems];
+
+
+  let filtered = [...items];
   switch (filter) {
     case "all":
-      filtered = [...sortedItems];
+      filtered = [...items];
       break;
     case "completed":
-      filtered = sortedItems.filter((item) => item.completed);
+      filtered = items.filter((item) => item.completed);
       break;
     case "uncompleted":
-      filtered = sortedItems.filter((item) => !item.completed);
+      filtered = items.filter((item) => !item.completed);
       break;
     case "starred":
-      filtered = sortedItems.filter((item) => item.isStarred);
+      filtered = items.filter((item) => item.isStarred);
       break;
     default:
-      filtered = [...sortedItems];
+      filtered = [...items];
       break;
   }
+
+  // Handle Drag and Drop
+  const handleDragDrop = (result) => {
+    const {destination,source,type} = result;
+    if(!destination){
+      return;
+    }
+    if(source.droppableId===destination.droppableId && destination.index === source.index){
+      return;
+    }
+    if(type === 'group'){
+      const newItems = [...items];
+      const sourceIndex = source.index;
+      const destinationIndex = destination.index;
+
+    const [removed] = newItems.splice(sourceIndex, 1);
+    newItems.splice(destinationIndex, 0, removed);
+
+    return setItems(newItems);
+  }
+    }
+  
+  
 
   return (
     <div className="container">
@@ -146,20 +168,34 @@ export default function Todos() {
       />
 
       <FilterButtons filterTasks={filterTasks} filter={filter} />
+      <DragDropContext onDragEnd={handleDragDrop}>
       <div className="todo-wrapper">
-        {filtered.map((todo) => {
-          return (
-            <TodoItem
-              todo={todo}
-              onDelete={onDelete}
-              key={todo.id}
-              toggleStar={toggleStar}
-              toggleCompleted={toggleCompleted}
-              editItem={editItem}
-            />
-          );
-        })}
+        <Droppable droppableId="todos" type="group">
+        {(provided)=>(
+          <div {...provided.droppableProps} ref={provided.innerRef}>
+            {filtered.map((todo,index) => {
+              return (
+                <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                {(provided)=>(
+                  <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <TodoItem
+                      key={todo.id}
+                      todo={todo}
+                      toggleStar={toggleStar}
+                      toggleCompleted={toggleCompleted}
+                      editItem={editItem}
+                      onDelete={onDelete}
+                    />
+                  </div>
+                )}
+                </Draggable>
+              );
+            })}
+          </div>
+        )}
+        </Droppable>
       </div>
+      </DragDropContext>
     </div>
   );
 }

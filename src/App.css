@@ -183,6 +183,7 @@ button{
 /*When todo is mark done*/
 .todo-completed{
   background-color: rgb(217 255 217);
+  text-decoration: line-through;
 }
 
 .profile-area{
