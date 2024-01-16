@@ -1,5 +1,7 @@
 # How run this project locally
 
+# Note: You need have node, git(when cloning) and npm installed on your system
+
 1. Download the code or clone the repo with command 
 - git clone https://github.com/realverma/todo.git
 
