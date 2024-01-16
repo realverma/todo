@@ -82,25 +82,31 @@ button{
 .add-btn{
   color: #fff;
   transition: .8s;
-  background: linear-gradient(90deg, rgb(101 92 255) 0%, rgb(0 0 251) 44%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(90deg, rgb(20 153 29) 0%, rgb(55 185 143) 44%, rgb(0 255 177) 100%);
   box-shadow: 0 4px 9px -4px #3b71ca;
+  transition: all 0.3s ease-in-out;
 }
 .add-btn:hover{
   box-shadow: 0 8px 9px -4px rgb(59 113 202 / 30%), 0 4px 18px 0 rgb(59 113 202 / 20%);
   outline: 0;
-  background: linear-gradient(90deg, rgb(56 45 248) 0%, rgb(3 3 203) 44%, rgb(0 170 205) 100%);
+  background: linear-gradient(90deg, rgb(14 208 134) 0%, rgb(73, 158, 131) 44%, rgb(0 170 205) 100%);
 }
 
 
+.filter{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
 
 /*--FilterButton.jsx--*/
 .filter-all, .filter-completed, .filter-uncompleted, .filter-starred {
-  background-color: #8500ff;
+  background-color: rgb(55 185 143);
   color: white;
   margin-right: 12px;
 }
 .active{
-  background-color: #51009c;
+  background-color: #006947;
 }
 
 /*Todo Wrapper(Declared in Todos.jsx)*/
@@ -108,7 +114,6 @@ button{
 .todo-wrapper{
   max-height: 400px;
   overflow-y: auto;
-  padding: 0 20px;
   margin-top: 12px;
 }
 
@@ -217,8 +222,14 @@ button{
 }
 ::-webkit-scrollbar-thumb {
   background: rgb(70,82,243);
-  background: linear-gradient(0deg, rgba(70,82,243,1) 23%, rgba(161,39,242,1) 100%);
+  background: linear-gradient(0deg, rgb(14 208 134) 23%, white 100%);
   outline: 0px inset #7fffd4;
   border-radius: 10px;
   height: 50px;
+}
+
+@media(max-width: 860px){
+  .profile-area{
+    display: none;
+  }
 }

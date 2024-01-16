@@ -5,7 +5,7 @@ export const FormBox = ({handleSubmit,setInputData,setDueDate, inputData, dueDat
     <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Finish my homework..."
+          placeholder="Add your tasks..."
           value={inputData}
           onChange={(event) => setInputData(event.target.value)}
         />

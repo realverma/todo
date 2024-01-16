@@ -4,6 +4,7 @@ import profileimg from '../images/profile.jpeg'
 export const Profile = () => {
   return (
     <div className="profile-area">
+      <div>
       <a
         href="https://neerajiitm.netlify.app/"
         target="_blank"
@@ -12,6 +13,8 @@ export const Profile = () => {
       >
         <img src={profileimg} alt="profile" />
       </a>
+      </div>
+      
       <a
         href="https://github.com/raajeverma"
         target="_blank"
